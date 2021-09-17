@@ -1,0 +1,15 @@
+$PATH    - 环境变量路径，输入指令时的查找目录
+$SHELL   - 当前用户Shell类型，如bash-3.2, 输入这个变量后，指令前的路径会变成bash-3.2
+$USER    - 当前登录用户
+$UID     - 当前登录用户的id
+$HOME    - 当前登录用户的家目录
+$PWD     - 获取当前目录，与pwd指令一致
+$SHLVL   - 当前shell的层级，执行bash会加一级，exit会减一级
+$LANG    - 当前linux语言
+$MAIL    - 当前用户的邮件存放目录
+$HOSTNAME - 主机名
+$HISTSIZE - 历史记录数
+$_   - 上一条命令的最后一截，如上一条命令是 echo a b c， $_ 输出 c
+
+
+

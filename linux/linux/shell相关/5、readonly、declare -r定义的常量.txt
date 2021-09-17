@@ -1,0 +1,28 @@
+系统中存在很多不可修改的常量
+如 uid - 用户id
+   $$ - shell进程id 
+
+
+此外还可以自定义任何常量
+
+
+定义常量
+
+readonly name=hello
+
+重新赋值： name=world  - readonly variable
+
+
+declare -r age=19
+
+
+
+销毁： exit退出进程
+
+
+查看所有的常量（自定义和系统的）
+
+declare -r   或   readonly -p
+
+
+

@@ -1,0 +1,37 @@
+脚本调试
+
+1、检测脚本中的语法错误
+
+   bash -n xxx.sh
+ 
+   例：
+   hello.sh内容如下:
+   if
+   ls -al
+   cd ..
+
+   这个脚本中if关键词没有endif, 属于语法错误
+
+
+2、调试执行
+
+   bash -x xxx.sh
+
+   例：
+   hello.sh内容如下:
+   hostna    这是一行错误指令
+   ls -al
+   cd ..
+
+
+   执行上面hello.sh脚本，结果会报 hostna command not found
+   但是：后面的ls -al 依然会执行
+   可怕结果： 一个脚本出现了类似错误，理应不该继续执行，但是依然执行了下去，导致意料之外的错误
+
+
+   解决： 可以bash -x xxx.sh
+   内容中带有 + 号的，就是执行的那条指令，+ 号之下的就是改指令执行的结果
+
+   注意：如果有多个 + 号，表示一条命令里带有其他命令
+   如 echo myhostname is `hostname`
+   `hostname`部分就是可执行命令

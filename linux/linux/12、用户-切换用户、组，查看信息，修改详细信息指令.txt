@@ -1,0 +1,24 @@
+其他对于用户操作常用指令
+
+A.su 用户名   - 切换用户
+  例：su root  - 切换到超管，需要密码
+     su luowen	- 如果从超管切换到普通用户，不需要密码，反之则需要
+
+B.newgrp 组名   - 当前用户切换到另外一个组（如果用户有多个组） 	
+  例：
+     touch a.txt    - 在当前组下创建一个文件
+     ls -l a.txt    - 可以看到这个文件创建用户及组信息	
+     gpasswd -g group1 luowen1  - 再将luowen1添加到附属组group1，这样luowen1就有两个组了
+     newgrp group1   - 切换到group1组
+     touch b.txt    - 在group1下创建b.txt
+     ls -l b.txt   - 再看b.txt文件就会发现是在group1下
+
+C.whoami   - 我是谁，会返回当前登录用户名
+
+D.id 用户名    - 查看某个用户信息，会返回用户 uid gid groups
+
+E.groups 用户名    - 返回用户所属组名
+
+F.chfn 用户名   - 更改用户的资料信息
+
+G.finger 用户名  - 查看用户的详细资料信息，但是：这个指令需要rpm安装finger包，百度

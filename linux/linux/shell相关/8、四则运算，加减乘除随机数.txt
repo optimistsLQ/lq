@@ -1,0 +1,62 @@
+Bash中的四则运算
+
+    	id++, id--	自增，自减，先运算再自增自减
+    	++id, --id	自增，自减，先自增自减再运算
+    	-, +		加减
+    	!, ~		logical and bitwise negation
+    	**		exponentiation
+    	*, /, %		multiplication, division, remainder
+    	+, -		addition, subtraction
+    	<<, >>		left and right bitwise shifts
+    	<=, >=, <, >	comparison
+    	==, !=		equality, inequality
+    	&		二进制位运算 AND   1 & 0   - 0
+    	^		二进制位运算 异或 XOR   1^2 - 3    01 ^ 10 = 11  
+    	|		二进制位运算 或 OR
+    	&&		短路判断 AND  true && false   false
+    	||		短路判断 OR   true || false   true
+    	expr ? expr : expr
+    			conditional operator
+    	=, *=, /=, %=,
+    	+=, -=, <<=, >>=,
+    	&=, ^=, |=	assignment
+
+
+
+注意： a=$b+$c   - 得到是 1+2 字符串
+
+启动算术运算：
+ 
+1、 let var=a+b     - 采用let命令，后续语句是执行的算术运算，a和b都是变量，不需要$前缀
+   
+    例： let a=1+2    echo $a   - 3
+
+2、 var=$[算术表达式]   
+
+    例： a=$[3+4]   echo $a   - 7
+
+3、 var=$((算术表达式))
+
+    例： a=$((4+5))   echo $a   - 9
+
+4、 var=$(expo arg1 arg2 ...)
+
+
+5、 declare -i var=表达式  
+
+    例： declare -i a=1+2+3   echo $a
+
+6、 echo '算术表达式' |bc  
+
+    例： echo '1+2+3*4' |bc
+
+
+
+其他：
+
+1、乘法符号有些场景需要转移，如 *
+
+2、bash内置随机数生成器： $RANDOM   - 数值在0-32767之间
+
+  例： 随机数对9取余    echo $[$RANDOM%9]
+

@@ -1,0 +1,27 @@
+创建shell脚本
+
+1、touch hello.sh
+
+2、vi hello.sh
+
+ 
+
+执行shell脚本
+
+方式1： bash hello.sh
+
+
+方式2： cat hello.sh | bash
+
+
+上述是使用bash指令，运行shell脚本
+
+方式3： 将shell脚本当做可执行文件运行
+
+步骤1： chmod +x hello.sh    - 给hello.sh加可执行权限
+
+步骤2:  mv hello.sh /root/bin/hello.sh     - 将hello.sh移动到指令目录
+
+使用： hello.sh 
+    
+  

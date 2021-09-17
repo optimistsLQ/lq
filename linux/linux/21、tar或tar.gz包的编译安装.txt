@@ -1,0 +1,39 @@
+linux中可执行的软件包分为 rpm包 和 tar包
+
+rpm - 可执行软件，相当于windows中的exe文件
+
+tar - 相当于软件的源码，需要编译成软件才能安装，执行
+      （软件的编译需要使用gcc编译器，linux安装开发工具/gcc 或 gcc c++）
+
+Tar包的编译和安装步骤
+
+1、解压，得到对应的目录
+
+  tar -zxf  xxx.tar.gz
+
+
+2、配置软件安装路径与库操作
+
+  a.进入目录，找到configure绿色可执行文件
+  b.执行./configure --prefix=/usr/local/xxxx --enable-so
+
+  解释： 上述语句是把tar包编译到/usr/local/xxx目录下
+  
+  --prefix=/usr/local/xxxx    - 编译到哪个目录（windows中的选择安装路径）
+  --enable-so   - 以动态链接库的形式安装（库就是lib目录，有很多so支持）
+
+
+3、编译和安装    
+
+  make  - 编译
+  make install  - 安装
+  简写： make && make install 
+
+
+4、启动软件，以apache举例
+
+  a.进入bin目录，使用apachectl启动apache软件
+  bin/apachectl start
+
+  注意：第一次运行apache会报错，原因是未指定ServerName
+  解决：打开conf/httpd.conf ，找到ServerName一行注释，下面添加一行 ServerName localhost:80

@@ -1,0 +1,26 @@
+设置用户口令（密码）
+
+基本语法： passwd -s/-l/-u/-d 用户名
+
+相关选项：
+-S  - 大写S，status缩写，查看用户口令状态
+-l  - lock缩写，代表锁定用户，不能登录操作系统
+-u  - unlock缩写，代表解锁用户
+-d  - del缩写，代表删除用户密码
+
+
+例：
+A. passwd 用户名  
+   passwd luowen  修改luowen的密码		
+
+B. passwd -S 用户名
+   例：passwd -S luowen    - 查看用户状态，如果用户没有密码，也会删除被锁定，因为linux下没有密码不能登录
+
+C. passwd -l 用户名
+   例：passwd -l luowen   - 锁定xx用户
+
+D. passwd -u 用户名
+   例：passwd -u luowen   - 解锁xx用户
+
+E. Passed -d 用户名
+   例：passwd -d luowen   - 删除用户的密码

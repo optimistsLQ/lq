@@ -1,0 +1,26 @@
+1、获取主机名  - hostname
+
+2、获取ip  - ifconfig  或 ip adds
+
+  截取出ip的正则： (([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])
+
+  提取本机ip地址：
+  ifconfig ens33 | egrep -o "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])" 
+
+3、获取操作系统信息
+
+  cat /etc/centos-release
+
+4、获取cpu信息
+ 
+  cpu=`lscpu |grep "Model name"`
+  echo ${cpu:13}
+
+5、获取内存信息
+
+  meminfo=`cat /proc/meminfo|egrep MemTotal` 
+  echo ${meminfo:10}
+
+6、获取磁盘信息
+  
+  lsblk |grep "^sd" | tr -s " " | cut -d " " -f 4  

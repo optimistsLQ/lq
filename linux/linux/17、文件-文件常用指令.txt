@@ -1,0 +1,154 @@
+1、touch 文件名    - 创建文件
+
+例： touch index.html
+
+如果要touch a/a.txt  必须要a文件夹存在
+
+
+
+2、rm -r/f 文件或文件夹名   - 删除文件或文件夹
+
+相关选项：
+-r  - 递归删除，主要用于删除文件夹
+-f  - 关闭删除确认
+
+例：
+A. rm -r 文件夹名    - 删除一个文件夹
+   例： rm -r a    -删除文件夹，如果不为空，则会询问是否进入文件，是否删除文件夹内xxx文件，最后是否删除当前文件夹
+
+B. rm -f 文件名/文件夹名    - 删除文件或文件夹，不需要确认（新手建议不带该参数）
+   例： rm -f a.txt
+
+
+
+3、cp -v/-R/-p 源文件路径  目标文件路径   - 复制文件/文件夹 
+
+相关选项：
+-v   -显示进度条
+-R   -递归复制
+-p   -复制时保持源文件的原有属性，比如(775权限)
+-vRp   -实际使用中，是三个参数连着写
+
+例：
+cp -vRp hello.txt /c/hello1.txt      将hello.txt复制到文件夹/c下，并重命名为hello1.txt
+
+
+4、mv -v 源文件路径   目标文件路径    - 剪切或移动文件/文件夹 
+
+相关选项：
+-v   -显示进度条
+
+例：
+mv -v hello.txt /c/hello1.txt      将hello.txt剪切到文件夹/c下，并重命名为hello1.txt
+
+
+
+5、wc -c/-l/-w  文件名/文件列表 
+
+相关选项：
+-c   - 统计文件的字节数
+-l   - lines缩写，统计文件的行数
+-w   - word缩写，统计文件的单词数
+
+例：
+A. wc 文件名   
+   例： wc a.txt   - 同时列出文件的统计详情，顺序是行数、单词数、字数
+
+B. wc -c 文件名   
+   例： wc -c a.txt   - 统计文件字数
+
+C. wc -l 文件名   
+   例： wc -l a.txt   - 统计文件行数
+
+D. wc -w 文件名
+   例： wc -c a.txt   - 统计文件中单词的个数
+
+
+6、grep -n/-c/-i 字符串  源文件   - 在源文件中搜索匹配的字符串
+
+相关选项：
+-n   - 显示匹配的行号
+-c   - 统计一共多少行匹配
+-i   - 匹配时忽略大小写（默认是匹配的大小写）
+
+例：
+A. grep 字符串 源文件
+   例： grep hello hello.txt   - 列出匹配到hello字符串的每一行
+
+B. grep -n 字符串 源文件
+   例： grep -n hello hello.txt   - 显示匹配到的行号
+
+C. grep -c 字符串 源文件
+   例： grep -c hello hello.txt   - 统计匹配到hello字符串的行数
+
+D. grep -i 字符串 源文件
+   例： grep -i hello hello.txt   - 忽略大小写匹配
+
+
+7、cat 文件名   - 正序显示文件内容
+
+
+8、tac 文件名   - 倒叙显示文件内容
+
+
+9、chmod -R 权限数字 文件名/文件夹名   - 修改文件的权限数字
+
+相关选项：
+-R  - 递归修改，如果是文件夹
+
+例： chmod -R 775 hello.txt
+
+
+10、chown -R 所有者名称 文件名/文件夹名   - 修改文件的所有者
+
+相关选项：
+-R  - 递归修改，如果是文件夹
+
+例： chown -R luowen hello.txt
+
+
+11、chgrp -R 新的组名 文件名/文件夹名   - 修改文件的所属组
+
+相关选项：
+-R  - 递归修改，如果是文件夹
+
+例： chgrp -R group1 hello.txt
+
+
+12、创建一个软链接文件（相当于windows中的快捷方式）
+
+ln -s/-d 源文件或目录  软链接文件名或目录
+
+相关选项
+-s  - 软链接
+-d  - 硬链接（了解）
+
+注意：源文件路径和软链接文件路径都必须是绝对路径
+其他：
+A.打开软链接文件 和 源文件内容是一样的
+B.修改软链接文件 也会修改 源文件
+C.删除软链接文件 不会删除 源文件
+
+
+13、find 搜索目录 -name/-group/-user 搜索文件（注意是全量匹配，不是模糊查询）
+
+相关选项：
+-name   - 查询文件
+-group  - 查询某个组下的所有文件
+-user  - 查询用户
+
+注意：都是递归搜索
+
+例：
+A. find 搜索目录 -name 文件名 
+   例： find /home/luowen -name test.txt   在/home/luowen 下搜索test.txt文件
+
+B. find 搜索目录 -group 组名 
+   例： find /home/ -group luowen   在/home/ 下搜索group， 展示该组下所有文件
+
+B. find 搜索目录 -user 用户名 
+   例： find /home/ -user luowen   在/home/ 下搜索用户名为luowen的， 展示该用户下所有文件
+
+
+14、locate 搜索文件名   - 扩展指令，搜索文件夹名
+  

@@ -1,0 +1,31 @@
+目录文件夹的相关操作
+
+mkdir  - 创建目录
+
+相关选项：
+-p  - 递归创建
+-m  - 创建目录时指定目录权限数字
+
+例：
+A. mkdir 目录名
+   例： mkdir hello   创建一个hello文件夹
+
+B. mkdir -p 层级目录
+   例： mkdir hello/world/   创建一个hello文件夹，同时创建world文件夹
+
+C. mkdir -m 权限数字 目录名
+   例： mkdir -m 775 hello   创建一个hello文件夹，并修改权限为775（drwxrwxr-x）
+
+
+
+rmdir  - 删除目录
+
+相关选项：
+-p  - 递归删除某个目录
+
+例：
+A. rmdir 目录名
+   例： rmdir hello   移除hello文件夹，只能移除空文件夹
+
+B. rmdir -p 目录名
+   例： rmdir -p hello1/world   递归移除文件夹，直到移除掉 hello1 

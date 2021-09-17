@@ -1,0 +1,60 @@
+linux网络配置
+
+1、以root用户登录
+
+2、找到网络配置文件
+   /etc/sysconfig/network-scripts/ifcfg-xxxxx
+   
+   注意：在台式、笔记本等不同终端下，ifcfg后的网卡名是不同的，但是前缀ifcfg是相同的
+
+3、打开配置文件  vi ifcfg-xxxx
+
+4、常见网络字段讲解
+
+   DEVICE  - 设备名称，就是ifcfg-xxxx中的xxxx，比如eth0，代表计算机中的第一块网卡
+   ONBOOT  - 网卡是否随计算机自动启动，实际服务器此参数要设置为yes
+   BOOTPROTO  - 网络的获取方式，dhcp（自动获取，与windos的自动获取ip和dns一致），static（手动设置，与windows一致）
+   IPADDR  - 手动设置的ip地址
+   NETMASK  - 手动设置的子网掩码，一般为255.255.255.0
+   GATEWAY  - 手动设置默认网关（路由设置有关）
+
+
+启动或关闭网络服务
+
+1、service  network  start/stop/restart/status 
+
+相关选项
+  start  - 启动网络
+  stop  - 停用网络
+  restart  - 重启网络
+  status  - 查看网络状态
+
+注意：service network restart 这类操作，比较简单粗暴，与windows关闭网络等操作一致
+
+
+2、ifup  网卡名称   - 启动某一块网卡（与windows关闭网卡一致）
+
+3、ifdown  网卡名称  - 停用某一块网卡
+
+
+获取linux的IP地址
+
+1、ifconfig   - 获取linux系统的ip地址
+注意：改命令在最简安装的linux下可能找不到，查看命令是否存在
+
+ls -l /usr/sbin|grep ifconfig
+
+如果没有，需要通过yum安装net-tools
+
+yum install net-tools
+
+安装成功后，再执行ifconfig
+
+
+2、ip addr   - 另一种获取ip地址的方法
+
+
+
+连接linux服务器
+
+1、ping linux服务器ip

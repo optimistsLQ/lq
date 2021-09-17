@@ -1,0 +1,8 @@
+虚拟机
+mac - VM ware 可以选择 fusion 软件     也可以选择 workstation pro软件
+
+windows - VM ware 可以选择 fusion 软件     也可以选择 workstation pro软件
+
+centos - 需要下载centos的dvd镜像、
+
+百度对应文章，安装

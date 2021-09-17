@@ -1,0 +1,30 @@
+在某些情况下，root用户可以给普通用户一些超级权限，比如添加用户、关机等。
+
+
+需要经过如下几步配置：
+
+第一步：打开/etc/sudoers 文件，该文件记录系统的用户权限配置
+
+第二步：找到116行附近
+      快捷定位： 命令模式下，:set nu   :116
+
+第三步：修改文件，给普通用户添加超级权限
+      在# %users localhost=/sbin/shutdown -h now 一行之下
+      添加：  用户名 主机名=权限指令路径 选项
+      例： luowen1 centos7=/usr/sbin/useradd    给luowen用户添加用户的权限
+
+
+第四步：/etc/sudoers是只读文件，:wq!强制保存退出
+
+第五步：su luowen1 切换到luowen1用户
+
+第六步：sudo useradd luowen2   添加一个luowen2用户
+
+
+其他：
+    查看普通用户的sudo权限列表：   sudo -l 
+    最下面的如 (root) /usr/sbin/useradd 
+
+    查看一个指令的位置
+    whereis 指令 
+    如 whereis useradd 

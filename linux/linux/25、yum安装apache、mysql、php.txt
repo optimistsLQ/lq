@@ -1,0 +1,77 @@
+
+安装apache
+  
+1、安装apache
+   
+   yum install -y httpd    - 安装apache服务，-y是指不需要确定操作
+
+2、设置自启动
+
+   chkconfig httpd on
+ 
+3、启动httpd服务，注意：yum安装的服务，可以直接service指令使用，不需要深入到软件目录去执行bin
+
+   service httpd start
+
+4、安装apache一些拓展
+
+   yum -y install httpd-manual mod_ssl mod_perl mod_auth_mysql
+
+
+注意：ServerName的修改，yum安装的软件，默认都在/etc目录下
+如apache  /etc/httpd/conf/httpd.conf
+
+
+
+
+安装mysql
+
+1、安装mysql，mysql-server,mysql-devel
+
+   yum -y install mysql mysql-server mysql-devel
+  
+   mysql  - 客户端程序
+   mysql-server  - 服务端程序
+   mysql-devel  - 开发设计的库
+
+
+2、开机启动
+   
+   chkconfig mysql on
+
+
+3、启动mysqld服务
+   
+   service mysql start  不能与apache一样，直接mysql -uroot,会报错
+
+4、启动mysql数据库
+
+   mysql -uroot
+
+
+
+
+安装Php
+
+1、安装php
+
+   yum install php php-mysql
+
+2、安装php常用拓展
+  
+   搜索 yum search php
+
+   Yum -y install gd php-gd gd-devel php-xml php-common php-mbstring php-ldap php-pear php-xmlrpc php-map
+
+
+3、重启httpd服务，php可以直接被apache解析
+
+  service httpd restart 
+ 
+
+4、创建测试页面
+
+  cd /var/www/html/
+  vi index.php
+
+  

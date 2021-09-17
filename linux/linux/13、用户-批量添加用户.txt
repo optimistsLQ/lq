@@ -1,0 +1,39 @@
+linux 可以通过useradd添加单个用户，但是这样比较麻烦
+也可以直接批量添加用户，具体步骤如下：
+
+1、创建一个批量用户文件，如users.txt
+  内容必须遵循 /etc/passwd 中用户信息描述方式
+  格式：用户名：密码占位x：用户自定义id：用户所属用户组id：用户备注：用户home目录：用户指令文件夹
+  例：u1:x:1001:1001:xxxxx:/home/u1:/bin/bash	
+
+
+2、将上一步创建的批量用户信息文件，导入到/etc/passwd文件中
+  导入指令：newusers < users.txt
+  再vi passwd 就可以看到新增的批量用户
+
+
+3、这些用户还没有密码，是不能登录linux系统的，下一步创建批量密码文件passwd.txt，与批量用户文件中的用户一一对应
+  内容必须遵循 /etc/shadow 中的定义的密码格式
+  格式： 用户名：明文密码
+  例：u1:123456
+     u2:123456
+
+
+4、下一步，因为passwd.txt文件中的密码是明文的，shadow中的密码是加密的，需要转换操作
+  将/etc/shadow中的已有密码信息还原到/etc/passwd文件中去
+  每一个密码填充到用户第二项密码占位符
+  还原指令：pwunconv 
+  注意：还原后/etc/shadow已经不见了
+
+
+5、再将passwd.txt文件导入到/etc/passwd文件中
+  导入指令：chpasswd < passwd.txt
+  再vi passwd，此时新增的u1,u2..用户的密码信息，就是将明文密码加密后的密码
+
+
+6、得到所有密码信息后，需要还原到shadow文件中
+  还原指令：pwconv
+  注意：此时会重新生成/etc/shadow文件
+
+
+7、最后删除users.txt 和 passwd.txt

@@ -1,0 +1,28 @@
+引导系统
+
+1、选择操作系统
+  
+文件位置： /etc/grub.conf
+ls /etc/grub.conf
+
+2、文件颜色普及：
+黑色文件： 代表普通文件 如通过touch xxx.html
+深蓝色文件： 代表文件夹
+浅蓝色文件： 软连接文件（相当于windows中的快捷方式）
+
+所以：当 ls /etc/grub.conf 的时候，列表里的软链接文件会有个 -> 右箭头，指向真实的链接文件
+
+所以需要打开真实的文件： vi /boot/grub/grub.conf
+
+
+文件内容大致如下
+
+Default=0      表示系统启动后，默认进入索引为0的第一个操作系统
+timeout=5      表示系统默认的数秒时间，默认为5秒
+splashimage=(hd0.0)/grub/splash.xpm.gz     系统的背景图
+Hidden menu     表示隐藏操作系统菜单
+Title CentOS(2.5.54-445xax)    该行及以后都是描述第一个操作系统的相关信息
+Xxxx 
+
+
+

@@ -1,0 +1,84 @@
+Linux中可以有很多用户组，一个用户组下可以有很多用户
+
+用户组可以有组密码、组管理员、组用户
+
+
+查看系统中所有的组，文件是 /etc/group
+
+文件内容及格式如下
+
+Root:x:0:xxx
+Luowen:x:1000:luowen
+
+格式： 以 ：分列，每一列是组的一种信息
+
+Root - 组名称
+x - 一个占位符，代表组密码，这里不会展示真实密码，真实密码在 /etc/gshadow文件中
+0 - 代表组id，说明：0 代表root超级组，1 - 499代表系统组，500以后代表自定义组（如luowen组的id为1000）
+Xxx - 组内用户名
+
+
+查看所有组的密码，文件是 /etc/gshadow （需要root权限）
+
+文件内容及格式如下
+root:::
+Lowen:!!::luowen
+
+root - 组名称
+第二列 - 组密码，高版本centos基本没有密码
+第三列 - 组内管理员
+第四列 - 组内用户
+
+
+
+对于用户组的操作
+
+1.groupadd -g id 组名   -  增加组
+
+相关选项：
+-g  手动指定新增的组id
+
+使用方法：
+A. groupadd 组名    - 在/etc/group 最末新增一个用户组，组id为递增的默认id
+   例： groupadd luowen1
+
+B. groupadd -g id 组名    - 在/etc/group 最末新增一个 指定组id的 用户组 
+   例： groupadd -g 1001 luowen2
+
+
+
+2.groupmod -n/-g 新组名/新组id  旧组名     -  修改组信息
+
+相关选项：
+-n  修改组名
+-g  修改组id
+
+使用方法： 
+A. groupmod -n 新组名  旧组名
+   例：groupmod -n luowen3 luowen1    - 将用户组luowen1修改成luowen3
+
+B. groupmod -g 新组id 旧组名
+   例：groupmod -g 1003 luowen1    - 将用户组luowen1的id修改成1003
+
+
+
+3.groupdel 组名      - 删除一个用户组
+
+例： 
+groupdel luowen1   删除luowen1的用户组
+
+
+
+4.gpasswd -a/-d 用户名 组名    - 在附属组中增加和删除用户
+
+相关选项：
+-a  username  - 添加用户到附属组
+-d  username  - 从附属组中移除用户
+
+例：
+A. gpasswd -a 用户名 组名
+   例： gpasswd -a luowen1 group1    将luowen1用户添加到group1组
+
+B. gpasswd -d 用户名 组名
+   例： gpasswd -d luowen1 group1    从group1中移除luowen1
+

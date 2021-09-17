@@ -1,0 +1,13 @@
+有些软件，如apache 和 mysql，每次linux系统启动的时候，都需要手动启动这些软件
+
+有没有方法随着系统启动而自动启动？
+
+系统自启动配置文件：
+
+/etc/rc.d/rc.local
+
+
+添加对应软件的启动指令
+
+  /usr/local/apache/bin/apachectl start 
+  /usr/local/mysql/bin/support-files/mysql.server start

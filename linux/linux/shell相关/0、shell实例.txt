@@ -1,0 +1,46 @@
+1、将 a = 1、b = 2 交换得到 a = 2、b = 1
+
+  方法1： 临时变量
+  tmp=$a
+  a=$b
+  b=$tmp
+ 
+  方法2： 异或 ^
+
+  let a=a^b;  - 此时a相当于c，存储的是3
+  b=a^b;   - 此时相当于b=c^b,值是最开始的a,1
+  a=a^b;   - 此时相当于a=c^a,值是最开始的b,2
+
+
+2、编写脚本，计算/etc/passwd文件中第10个用户和第20个用户ID之和
+
+  思路：取出第十行和第二十行，每行的第三个字段就是用户id
+
+  adduid.sh:		
+
+  a=$(head -$1 passwd.txt|tail -1 | cut -d : -f 3)
+  b=$(head -$2 passwd.txt|tail -1 | cut -d : -f 3)
+
+  echo $[$a + $b]
+
+
+3、编写脚本，如果某一张磁盘/dev/sda-x使用率大于等于80%，则报警
+
+  思路：获取所有磁盘的使用率，排序获取数值最大的，比较
+
+  useage=$(df|grep "^/dev/disk"|tr -s " "|cut -d " " -f 5 | sort -r| head -1|cut -d % -f 1)
+ if [[ $useage -ge 80 ]]; then
+   echo '磁盘快满了'
+ fi
+
+
+4、编写脚本，新增一个用户，如果存在则提示并退出，不存在才新增
+
+  思路：用 id 用户名 查询存在
+
+  [ -z $1 ]&&echo 要增长的用户名不能为空 && exit;
+  id $1 &>/dev/null && echo 用户已存在 && exit;
+
+  useradd $1 && echo 新增用户成功
+
+	

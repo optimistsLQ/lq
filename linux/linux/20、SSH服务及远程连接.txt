@@ -1,0 +1,24 @@
+SSH
+
+一、什么是ssh
+SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；
+SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。
+利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。
+
+SSH是标准的网络协议，可用于大多数UNIX操作系统，能够实现字符界面的远程登录管理，
+它默认使用22号端口，采用密文的形式在网络中传输数据，相对于通过明文传输的Telnet，具有更高的安全性。
+
+
+打开SSH服务
+一般安装CenteOS时，会自带SSH服务
+连接SSH后可以在windows或Mac上管理远程linux服务器
+
+service sshd start/stop/restart/status     - 启动/停用/重启/查看状态 SSH服务
+
+
+打开了SSH服务后，其他服务器就可以进行远程连接了。
+
+如xshell或mac的shell窗口
+新建远程连接 -> 用户名root -> 远程地址 ssh root@192.168.37.140
+
+
